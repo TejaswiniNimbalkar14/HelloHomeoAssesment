@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#C7EBFF"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/crew_member_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/crew_member_image"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="2dp"
+            android:text="@string/name_title"/>
+
+        <TextView
+            android:id="@+id/crew_member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/name_title"
+            android:layout_margin="2dp"
+            android:maxLines="1"
+            android:text="Crew Member Name"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/agency_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_title"
+            android:layout_toRightOf="@id/crew_member_image"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="2dp"
+            android:text="@string/agency_title"/>
+
+        <TextView
+            android:id="@+id/crew_member_agency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/agency_title"
+            android:layout_below="@id/crew_member_name"
+            android:layout_margin="2dp"
+            android:maxLines="1"
+            android:text="Crew Member Agency"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/wikipedia_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/agency_title"
+            android:layout_toRightOf="@id/crew_member_image"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="2dp"
+            android:text="@string/wikipedia_title"/>
+
+        <TextView
+            android:id="@+id/crew_member_wikipedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/wikipedia_title"
+            android:layout_below="@id/crew_member_agency"
+            android:layout_margin="2dp"
+            android:text="Crew Member Agency"
+            android:maxLines="1"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/status_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wikipedia_title"
+            android:layout_toRightOf="@id/crew_member_image"
+            android:text="@string/status_title"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/crew_member_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/status_title"
+            android:layout_below="@id/crew_member_wikipedia"
+            android:layout_margin="2dp"
+            android:text="Crew Member Agency"
+            android:textSize="18sp"/>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

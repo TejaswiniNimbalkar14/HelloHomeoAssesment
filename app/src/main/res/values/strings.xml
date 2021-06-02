@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HelloHomeoAssesment</string>
+    <string name="name_title">Name :</string>
+    <string name="agency_title">Agency :</string>
+    <string name="wikipedia_title">Wikipedia :</string>
+    <string name="status_title">Status :</string>
+    <string name="refresh">Refresh Data</string>
+    <string name="delete">Delete Data</string>
+</resources>
