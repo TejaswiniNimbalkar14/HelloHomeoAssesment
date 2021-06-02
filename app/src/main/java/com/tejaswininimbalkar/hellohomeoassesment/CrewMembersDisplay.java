@@ -47,19 +47,26 @@ public class CrewMembersDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crew_members_display);
 
+        //hooks
         recyclerView = findViewById(R.id.crew_members_recycler);
         refresh = findViewById(R.id.refresh_btn);
         delete = findViewById(R.id.delete_button);
 
+        //setting up recycler view
         LinearLayoutManager layoutManager = new LinearLayoutManager(CrewMembersDisplay.this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
+        //To access api using retrofit
         apiInterface = RetrofitInstance.getRetrofit().create(ApiInterface.class);
+
+        //To access room db
         database = AppDatabase.getInstance(CrewMembersDisplay.this);
 
+        //This will load data when activity created
         loadData();
 
+        //On clicking refresh button, this will again load data
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +74,8 @@ public class CrewMembersDisplay extends AppCompatActivity {
             }
         });
 
+        //This will delete the data from room and again load data
+        // (Data will be shown up if network connected)
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +86,7 @@ public class CrewMembersDisplay extends AppCompatActivity {
     }
 
     private void loadData() {
+        //If user is offline data from room will be shown
         if (!isConnected(CrewMembersDisplay.this)) {
             List<CrewMembersEntity> list = database.crewMembersDao().getAllRecords();
             MembersAdapter adapter1 = new MembersAdapter(CrewMembersDisplay.this, list);
@@ -84,7 +94,9 @@ public class CrewMembersDisplay extends AppCompatActivity {
             if (list.isEmpty()) {
                 Toast.makeText(this, "No data available! Please connect to the internet.", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        }
+        //Else it will load data from API
+        else {
             callApi();
         }
     }
@@ -96,7 +108,10 @@ public class CrewMembersDisplay extends AppCompatActivity {
                 if (response.body().size() > 0) {
                     List<CrewMembers> membersList = response.body();
                     CrewMembersAdapter adapter = new CrewMembersAdapter(membersList, CrewMembersDisplay.this);
+                    //Setting fetched data to recycler view
                     recyclerView.setAdapter(adapter);
+
+                    //inserting fetched data to room db
                     insertToLocalDB(membersList);
                 } else {
                     Toast.makeText(CrewMembersDisplay.this, "List is empty", Toast.LENGTH_SHORT).show();
@@ -110,6 +125,7 @@ public class CrewMembersDisplay extends AppCompatActivity {
         });
     }
 
+    //inserting fetched data to room db
     private void insertToLocalDB(List<CrewMembers> membersList) {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         for (int i = 0; i < membersList.size(); i++) {
@@ -147,6 +163,7 @@ public class CrewMembersDisplay extends AppCompatActivity {
         }
     }
 
+    //checking internet connection
     private boolean isConnected(CrewMembersDisplay crewMembersDisplay) {
         ConnectivityManager connectivityManager = (ConnectivityManager) crewMembersDisplay.getSystemService(Context.CONNECTIVITY_SERVICE);
 

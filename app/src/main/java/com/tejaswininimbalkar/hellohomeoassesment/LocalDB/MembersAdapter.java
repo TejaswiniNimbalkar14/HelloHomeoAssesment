@@ -42,7 +42,6 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberVi
         holder.agency.setText(membersEntities.get(position).agency);
         holder.status.setText(membersEntities.get(position).status);
         holder.wikipedia.setText(membersEntities.get(position).wikipedia);
-        //holder.name.setText(membersEntities.get(position).name);
     }
 
     @Override
